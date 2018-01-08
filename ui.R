@@ -1,12 +1,13 @@
 library(shiny)
 
 # Define UI for miles per gallon application
-shinyUI(pageWithSidebar(
+shinyUI(list(
   
   # Application title
   headerPanel("TCGA download url tool"),
   
-  sidebarPanel(
+  fluidPage(
+    sidebarPanel(
     selectInput("variable", "Select One Caner:",
                 list("Acute Myeloid Leukemia" = "LAML", 
                      "Adrenocortical Cancer" = "ACC", 
@@ -60,7 +61,6 @@ shinyUI(pageWithSidebar(
     checkboxInput("outliers", "Show outliers", FALSE)
   ),
   
-  mainPanel(
-    textOutput("text1")
-  )
-))
+    mainPanel(htmlOutput("mySite"))
+  
+)))
