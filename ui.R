@@ -4,11 +4,12 @@ library(shiny)
 shinyUI(list(
   
   # Application title
-  headerPanel("TCGA download url tool"),
+  #titlePanel("TCGA下载地址获取工具"),
   
   fluidPage(
+    titlePanel("TCGA下载地址获取工具"),
     sidebarPanel(
-    selectInput("variable", "Select One Caner:",
+    selectInput("variable", "请选择一种癌症:",
                 list("Acute Myeloid Leukemia" = "LAML", 
                      "Adrenocortical Cancer" = "ACC", 
                      "Bile Duct Cancer" = "CHOL",
@@ -49,18 +50,20 @@ shinyUI(list(
                      "Thyroid Cancer" = "THCA",
                      "Uterine Carcinosarcoma" = "UCS"
                      )),
-    selectInput("var", "Select One Data:",
+    selectInput("var", "选择一种数据:",
                 list("gene expression RNAseq(HTSeq)" = "htseq_counts", 
                      "survival" = "survival", 
                      "phenotype" = "GDC_phenotype",
                      "miRNA Expression Quantification" = "mirna",
                      "copy number" = "masked_cnv",
                      "MuSE Variant Aggregation and Masking" = "muse_snv",
-                     "MuTect2 Variant Aggregation and Masking" = "mutect2_snv")),
+                     "MuTect2 Variant Aggregation and Masking" = "mutect2_snv"))
     
-    checkboxInput("outliers", "Show outliers", FALSE)
+    #checkboxInput("outliers", "Show outliers", FALSE)
   ),
   
-    mainPanel(htmlOutput("mySite"))
+    mainPanel(h4("你选择的数据下载地址为:"),
+              htmlOutput("mySite"))
+  
   
 )))
